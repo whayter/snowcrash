@@ -6,11 +6,14 @@ Using the strings command on the level08 file, I can see that the program is wri
 
 If I run the program passing the token file as parameter, I get an error message telling me that I "may not access 'token'". It doesn't look like a bash error but rather seems to come from the program. So I'll take a closer look with gdb.
 
-```gdb ./level08 token```
-```disass main```
+```
+gdb ./level08 token
+disass main
+```
 
 The first part of the program simply checks the parameter. If no parameter is passed, the program displays how it should be used before exiting.
 
+```
 [...]
 0x080485a6 <+82>:    mov    0x1c(%esp),%eax
 0x080485aa <+86>:    add    $0x4,%eax
@@ -30,6 +33,7 @@ The first part of the program simply checks the parameter. If no parameter is pa
 0x080485dd <+137>:   movl   $0x1,(%esp)
 0x080485e4 <+144>:   call   0x8048460 <exit@plt>
 [...]
+```
 
 Here it is clear that the name of the file given as a parameter is compared with the string "token" using the strstr() function. If the strings are equal, the program displays the error message before exiting. Otherwise, the file is opened, its content is read, saved, and displayed using the write() function.
 
