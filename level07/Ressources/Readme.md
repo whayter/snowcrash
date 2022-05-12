@@ -4,7 +4,8 @@ There is a level07 executable that displays "level07".
 
 I used gdb to disassemble the program:
 
-```gdb ./level07
+```
+gdb ./level07
 disass main
 ```
 
