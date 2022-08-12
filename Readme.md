@@ -1,5 +1,7 @@
 ## Snow-Crash
 
+For each level of the project, we have to find the password allowing us to connect with the account "flagXX" (XX being the current level number). Once connected to this account, we can run the `getflag` command which will give us the password to reach the next level.
+
 * [x] level00
 * [x] level01
 * [x] level02

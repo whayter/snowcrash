@@ -1,14 +1,14 @@
 ## level08
 
-There is in the current directory a level08 executable and a file named token for which I don't have read rights.
+There is a level08 executable and a file named token for which I don't have read rights in the current directory.
 
-Using the strings command on the level08 file, I can see that the program is written in C, and uses the functions open, read, write, printf, strstr... The program takes the path of a file as a parameter and seems to simply display its contents.
+Using the strings command on the level08 file, I can see that the program is written in C, and uses the open(), read(), write(), printf(), strstr() functions... The program takes the path of a file as a parameter and seems to simply display its contents.
 
 If I run the program passing the token file as parameter, I get an error message telling me that I "may not access 'token'". It doesn't look like a bash error but rather seems to come from the program. So I'll take a closer look with gdb.
 
 ```
-gdb ./level08 token
-disass main
+gdb level08 token
+disas main
 ```
 
 The first part of the program simply checks the parameter. If no parameter is passed, the program displays how it should be used before exiting.
@@ -37,6 +37,6 @@ The first part of the program simply checks the parameter. If no parameter is pa
 
 Here it is clear that the name of the file given as a parameter is compared with the string "token" using the strstr() function. If the strings are equal, the program displays the error message before exiting. Otherwise, the file is opened, its content is read, saved, and displayed using the write() function.
 
-So the problem is not that I don't have read rights on the token file, but simply that the file is called token. I can try to create a symbolic link to get around this issue : ```ln -s /home/user/level08/token /tmp/tok ; ./level08 /tmp/tok``` displays "quif5eloekouj29ke0vouxean". Bingo.
+So the problem is not that I don't have read rights on the token file, but simply that the file is called token. I can try to create a symbolic link to get around this issue : `ln -s /home/user/level08/token /tmp/exploit ; ./level08 /tmp/exploit` displays "quif5eloekouj29ke0vouxean". Bingo.
 
-The ```su flag08``` command works with this password and I can now run the ```getflag``` command and go to the next level.
+The `su flag08` command works with this password and I can now run the `getflag` command and go to the next level.

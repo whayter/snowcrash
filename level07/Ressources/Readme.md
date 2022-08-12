@@ -1,12 +1,12 @@
 ## level07
 
-There is a level07 executable that displays "level07".
+There is a level07 executable that simply displays "level07".
 
 I used gdb to disassemble the program:
 
 ```
-gdb ./level07
-disass main
+gdb level07
+disas main
 ```
 
 ```
@@ -21,8 +21,8 @@ disass main
 [...]
 ```
 
-It is clear that the program makes a call to getenv to get the value of the environment variable LOGNAME, and then display it with /bin/echo.
+It is clear that the program makes a call to `getenv()` to get the value of the environment variable LOGNAME, and then display it with `/bin/echo`.
 
-Not surprisingly, the environment variable LOGNAM is currently equal to 'level07'. All I need to do is change the LOGNAME environment variable so that the program displays what I want.
+Not surprisingly, the environment variable LOGNAME is currently equal to 'level07'. All I need to do is change the LOGNAME environment variable so that the program displays what I want.
 
 `export 'LOGNAME=$(getflag)' ; ./level07` and it's done.
