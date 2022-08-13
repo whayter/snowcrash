@@ -53,4 +53,4 @@ level11@SnowCrash:~$ cat /tmp/exploit
 Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
 ```
 
-The `su flag11` command works with this password and I can now run the `getflag` command and go to the next level.
+I can now run the `su level12` command and go to the next level using that password.
